@@ -61,7 +61,7 @@ causalForest <- function(formula, data, treatment,
     est.size <- sample.size - train.size  
   }
   
-  print("Building trees ...")
+  if(verbose){print("Building trees ...")}
   
   for (tree.index in 1:num.trees) {
     
@@ -182,7 +182,7 @@ propensityForest <- function(formula, data, treatment,
   # do not implement subset option of causalTree, inherited from rpart
   # do not implement weights and costs yet
   
-  if(sample.size.train.frac != 1) {
+  if(sample.size.train.frac != 1 & verbose) {
     print("warning: for propensity Forest, sample.size.train.frac should be 1; resetting to 1")
     sample.size.train.frac <- 1
   }
@@ -209,7 +209,7 @@ propensityForest <- function(formula, data, treatment,
   
   outcomename = as.character(formula[2])
   
-  print("Building trees ...")
+  if(verbose){print("Building trees ...")}
   
   for (tree.index in 1:num.trees) {
     
